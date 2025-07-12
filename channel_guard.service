@@ -5,7 +5,7 @@ After=network.target lnd.service
 [Service]
 User=admin
 Group=admin
-ExecStart=/usr/local/bin/channel_guard.py CHANGE_ME_CHAN_ID  # Replace with your chan_id (numeric SCID or x-format) and options, e.g., 902245x1158x1 --threshold 0.4
+ExecStart=/usr/local/bin/channel_guard.py CHANGE_ME_CHAN_ID
 Restart=always
 RestartSec=10
 StandardOutput=journal

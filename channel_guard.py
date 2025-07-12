@@ -57,7 +57,7 @@ def main():
             # Get balances and chan_point from listchannels
             list_chans_str = run_lncli(['listchannels'])
             list_chans = json.loads(list_chans_str)
-            channel = next((ch for ch in list_chans['channels'] if ch['chan_id'] == chan_id_numeric), None)
+            channel = next((ch for ch in list_chans['channels'] if ch.get('scid', '') == chan_id_numeric), None)
             if not channel:
                 raise ValueError(f"Channel {chan_id_numeric} not found in listchannels.")
 

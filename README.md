@@ -30,6 +30,7 @@ Inspired by [charge-lnd](https://github.com/accumulator/charge-lnd), but standal
 
 3. Configure the systemd service:
 - Edit `/etc/systemd/system/channel_guard.service` to set your `ExecStart` line with the desired channel ID and options (e.g., `ExecStart=/usr/local/bin/channel_guard.py 902245x1158x1 --threshold 0.4 --blocker_ppm 17000` or using the numeric SCID).
+- NOTE: The User and Group settings are Minibolt specific. You may need to change these.
 - Reload systemd: `sudo systemctl daemon-reload`.
 - Enable and start: `sudo systemctl enable --now channel_guard.service`.
 

@@ -8,6 +8,9 @@ Group=admin
 ExecStart=/usr/local/bin/channel_guard.py CHANGE_ME_CHAN_ID
 Restart=always
 RestartSec=10
+Environment="PYTHONUNBUFFERED=1"
+Environment="PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+Environment="HOME=/home/admin"
 StandardOutput=journal
 StandardError=journal
 

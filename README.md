@@ -20,11 +20,11 @@ Inspired by [charge-lnd](https://github.com/accumulator/charge-lnd), but standal
 
 ## Installation
 1. Clone this repo:
-"git clone https://github.com/Benny-444/channel_guard.git"
-- cd channel_guard
+  git clone https://github.com/Benny-444/channel_guard.git
+  cd channel_guard
 
 2. Run the installer:
-- ./install.sh
+  ./install.sh
 - This copies the script to `/usr/local/bin/channel_guard.py` and sets up the systemd service template.
 
 3. Configure the systemd service:

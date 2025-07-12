@@ -21,7 +21,7 @@ Inspired by [charge-lnd](https://github.com/accumulator/charge-lnd), but standal
 ## Installation
 1. Clone this repo:
 git clone https://github.com/Benny-444/channel_guard.git
-cd lnd-channel-guard
+cd channel_guard
 
 2. Run the installer:
 ./install.sh

@@ -24,6 +24,7 @@ Inspired by [charge-lnd](https://github.com/accumulator/charge-lnd), but standal
 - cd channel_guard
 
 2. Run the installer:
+- chmod +x install.sh
 - ./install.sh
 - This copies the script to `/usr/local/bin/channel_guard.py` and sets up the systemd service template.
 

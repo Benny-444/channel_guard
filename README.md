@@ -18,7 +18,7 @@ Inspired by [charge-lnd](https://github.com/accumulator/charge-lnd), but standal
 - Python 3 (usually pre-installed; if not, `sudo apt install python3`).
 - The script must run as a user with access to `lncli` (e.g., `lnd` user).
 
-## Installation
+## Installation (The program and its installation assumes a Minibolt setup. Adjust accordingly)
 1. Clone this repo:
 - git clone https://github.com/Benny-444/channel_guard.git
 - cd channel_guard

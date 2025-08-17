@@ -5,7 +5,22 @@ After=network.target lnd.service
 [Service]
 User=admin
 Group=admin
-ExecStart=/usr/local/bin/channel_guard.py CHANGE_ME_CHAN_ID
+
+# channel_guard.py <chan_id> [options]
+#
+# Arguments:
+#   chan_id                    Channel ID (numeric or x:x:x format)
+#
+# Options:
+#   --lower_threshold FLOAT    Apply blocker below this (default: 0.3 = 30%)
+#   --upper_threshold FLOAT    Remove blocker above this (default: 0.4 = 40%)
+#   --liquidity_floor FLOAT    HTLC max preserves this amount (default: 0.35 = 35%)
+#   --blocker_ppm INT          Blocker fee rate in ppm (default: 17000)
+#   --poll_interval INT        Polling interval in seconds (default: 2)
+#   --htlc_change_threshold FLOAT  Min ratio change for HTLC updates (default: 0.01 = 1%)
+
+ExecStart=/home/admin/channel_guard/channel_guard.py CHAN_ID
+WorkingDirectory=/home/admin/channel_guard
 Restart=always
 RestartSec=10
 Environment="PYTHONUNBUFFERED=1"

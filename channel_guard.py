@@ -162,7 +162,7 @@ class ChannelGuard:
         # Extract current policy values to preserve
         base_fee_msat = our_policy.get('fee_base_msat', '0')
         time_lock_delta = our_policy.get('time_lock_delta', '144')
-        min_htlc_msat = our_policy.get('min_htlc_msat', '5000000')
+        min_htlc_msat = our_policy.get('min_htlc', '1000')
 
         cmd = [
             'updatechanpolicy',
@@ -245,7 +245,7 @@ class ChannelGuard:
                     print(msg)
                     self.logger.info(msg)
                     self.last_log_time = time.time()
-                    
+
                     # Update HTLC ratio in state since we just updated
                     chan_state["last_htlc_ratio"] = perc
                     self.save_state()
@@ -268,7 +268,7 @@ class ChannelGuard:
                     print(msg)
                     self.logger.info(msg)
                     self.last_log_time = time.time()
-                    
+
                     # Update HTLC ratio in state since we just updated
                     chan_state["last_htlc_ratio"] = perc
                     self.save_state()
@@ -284,7 +284,7 @@ class ChannelGuard:
                         if ratio_change >= self.htlc_change_threshold:
                             should_update_htlc = True
                             update_reason = f"ratio changed {ratio_change*100:.2f}%"
-                    
+
                     if should_update_htlc and current_htlc_max != desired_htlc_max:
                         # Only update HTLC max, keep current fee
                         self.update_channel_policy(chan_point, current_ppm, desired_htlc_max, our_policy)
@@ -292,11 +292,11 @@ class ChannelGuard:
                         print(msg)
                         self.logger.info(msg)
                         self.last_log_time = time.time()
-                        
+
                         # Save the ratio to state
                         chan_state["last_htlc_ratio"] = perc
                         self.save_state()
-                        
+
                     elif log_now:
                         status = "Blocker active" if chan_state["blocker_active"] else "Normal"
                         msg = f"Outbound liquidity {perc*100:.2f}% - {status} - Fee: {current_ppm} ppm, HTLC max: {current_htlc_max:,} sats"
@@ -360,7 +360,7 @@ def main():
 
     if args.upper_threshold < 0 or args.upper_threshold >= 1:
         sys.exit("Error: upper_threshold must be between 0 and 1")
-    
+
     if args.htlc_change_threshold <= 0:
         sys.exit("Error: htlc_change_threshold must be positive")
 
